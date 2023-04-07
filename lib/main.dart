@@ -66,7 +66,14 @@ class _MyHomePageState extends State<MyHomePage> {
         side: BorderSide(width: 0.5, color: Colors.white)),
   );
 
-  void _showOverlay(BuildContext context) async {
+  final TextStyle overlayCountStyle = TextStyle(
+      color: Colors.red,
+      fontSize: 100,
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+      fontFamily: 'Futura');
+
+  void _showOverlay(BuildContext rcontext) async {
     OverlayState? overlayState = Overlay.of(context);
     OverlayEntry overlayEntry1;
     OverlayEntry overlayEntry2;
@@ -102,12 +109,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       "3",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.red, fontSize: 96),
+                      style: overlayCountStyle,
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 715,
+                  top: 745,
                   left: 215,
                   child: Center(
                     child: Stack(alignment: Alignment.center, children: [
@@ -145,18 +152,6 @@ class _MyHomePageState extends State<MyHomePage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             color: Colors.black.withOpacity(0.7),
-            // child: Material(
-            //   color: Colors.transparent,
-            //   child: Container(
-            //     alignment: Alignment.bottomCenter,
-            //     padding: EdgeInsets.only(bottom: 20),
-            //     child: Text(
-            //       "3",
-            //       textAlign: TextAlign.center,
-            //       style: TextStyle(color: Colors.red, fontSize: 96),
-            //     ),
-            //   ),
-            // ),
             child: Stack(
               children: [
                 Material(
@@ -167,12 +162,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       "2",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.red, fontSize: 96),
+                      style: overlayCountStyle,
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 715,
+                  top: 745,
                   left: 215,
                   child: Center(
                     child: Stack(alignment: Alignment.center, children: [
@@ -210,18 +205,6 @@ class _MyHomePageState extends State<MyHomePage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             color: Colors.black.withOpacity(0.7),
-            // child: Material(
-            //   color: Colors.transparent,
-            //   child: Container(
-            //     alignment: Alignment.bottomCenter,
-            //     padding: EdgeInsets.only(bottom: 20),
-            //     child: Text(
-            //       "3",
-            //       textAlign: TextAlign.center,
-            //       style: TextStyle(color: Colors.red, fontSize: 96),
-            //     ),
-            //   ),
-            // ),
             child: Stack(
               children: [
                 Material(
@@ -232,12 +215,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       "1",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.red, fontSize: 96),
+                      style: overlayCountStyle,
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 715,
+                  top: 745,
                   left: 215,
                   child: Center(
                     child: Stack(alignment: Alignment.center, children: [
@@ -289,126 +272,130 @@ class _MyHomePageState extends State<MyHomePage> {
     // final widgetKey = GlobalKey();
     return DefaultTabController(
         length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            // Here we take the value from the MyHomePage object that was created by
-            // the App.build method, and use it to set our appbar title.
-            backgroundColor: Colors.black,
-            title: RichText(
-                text: TextSpan(
-                    text: "APP",
-                    style: TextStyle(color: Colors.white),
-                    children: const <TextSpan>[
-                  TextSpan(
-                    text: "TITLE",
-                    style: TextStyle(color: Colors.red),
-                  ),
-                ])),
-            actions: [
-              CircleAvatar(
-                radius: 40.0,
-                backgroundColor: Colors.green[600],
-                child: ClipOval(
-                  child: Image.network(
-                    "assets/uchiha.jpg",
-                    width: 50.0,
-                    height: 50.0,
-                  ),
-                ),
-              ),
-            ],
-            bottom: TabBar(
-              indicatorColor: Colors.grey,
-              dividerColor: Colors.white,
-              labelPadding: EdgeInsets.only(right: 150),
-              tabs: [
-                Tab(
-                  child: Text(
-                    "MAIN",
-                  ),
-                ),
-                Tab(text: "LEADERBOARD")
-              ],
-            ),
-          ),
-          body: Container(
-            color: Colors.black,
-            child: TabBarView(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    first_section_content(),
-                    card_content(),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          // key: widgetKey,
-                          width: 110,
-                          height: 110,
-                          padding: EdgeInsets.all(20),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              _showOverlay(context);
-                              //print(MediaQuery.of(context).size.width);
-                              //print(MediaQuery.of(context).size.height);
-                              // () async {
-                              //   RenderBox renderbox = widgetKey.currentContext!
-                              //       .findRenderObject() as RenderBox;
-                              //   Offset position =
-                              //       renderbox.localToGlobal(Offset.zero);
-                              //   double x = position.dx;
-                              //   double y = position.dy;
-                              //   print(x);
-                              // };
-                            },
-                            style: recordingButtonStyle,
-                            child: Container(),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              height: 50,
-                              margin: EdgeInsets.all(10),
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                style: srButtonStyle,
-                                child: Text("Save Recording",
-                                    style: TextStyle(color: Colors.white)),
-                              ),
-                            ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                style: ulButtonStyle,
-                                child: Icon(
-                                  Icons.file_upload_outlined,
-                                  color: Colors.black,
-                                  size: 40,
-                                ),
-                                // color: Colors.white,
-                                // icon: Icon(
-                                //   Icons.file_upload_outlined,
-                                //   color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+        child: Container(
+          color: Colors.black,
+          padding: EdgeInsets.all(30),
+          child: Scaffold(
+            appBar: AppBar(
+              // Here we take the value from the MyHomePage object that was created by
+              // the App.build method, and use it to set our appbar title.
+              backgroundColor: Colors.black,
+              title: RichText(
+                  text: TextSpan(
+                      text: "APP",
+                      style: TextStyle(color: Colors.white),
+                      children: const <TextSpan>[
+                    TextSpan(
+                      text: "TITLE",
+                      style: TextStyle(color: Colors.red),
                     ),
-                  ],
+                  ])),
+              actions: [
+                CircleAvatar(
+                  radius: 40.0,
+                  backgroundColor: Colors.green[600],
+                  child: ClipOval(
+                    child: Image.network(
+                      "assets/uchiha.jpg",
+                      width: 50.0,
+                      height: 50.0,
+                    ),
+                  ),
                 ),
-                Container(),
               ],
+              bottom: TabBar(
+                indicatorColor: Colors.grey,
+                dividerColor: Colors.white,
+                labelPadding: EdgeInsets.only(right: 10),
+                tabs: [
+                  Tab(
+                    child: Text(
+                      "MAIN",
+                    ),
+                  ),
+                  Tab(text: "LEADERBOARD")
+                ],
+              ),
             ),
+            body: Container(
+              color: Colors.black,
+              child: TabBarView(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      first_section_content(),
+                      card_content(),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            // key: widgetKey,
+                            width: 110,
+                            height: 110,
+                            padding: EdgeInsets.all(20),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                _showOverlay(context);
+                                //print(MediaQuery.of(context).size.width);
+                                //print(MediaQuery.of(context).size.height);
+                                // () async {
+                                //   RenderBox renderbox = widgetKey.currentContext!
+                                //       .findRenderObject() as RenderBox;
+                                //   Offset position =
+                                //       renderbox.localToGlobal(Offset.zero);
+                                //   double x = position.dx;
+                                //   double y = position.dy;
+                                //   print(x);
+                                // };
+                              },
+                              style: recordingButtonStyle,
+                              child: Container(),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height: 50,
+                                margin: EdgeInsets.all(10),
+                                child: OutlinedButton(
+                                  onPressed: () {},
+                                  style: srButtonStyle,
+                                  child: Text("Save Recording",
+                                      style: TextStyle(color: Colors.white)),
+                                ),
+                              ),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                child: OutlinedButton(
+                                  onPressed: () {},
+                                  style: ulButtonStyle,
+                                  child: Icon(
+                                    Icons.file_upload_outlined,
+                                    color: Colors.black,
+                                    size: 40,
+                                  ),
+                                  // color: Colors.white,
+                                  // icon: Icon(
+                                  //   Icons.file_upload_outlined,
+                                  //   color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Container(),
+                ],
+              ),
+            ),
+            // This trailing comma makes auto-formatting nicer for build methods.
           ),
-          // This trailing comma makes auto-formatting nicer for build methods.
         ));
   }
 }
